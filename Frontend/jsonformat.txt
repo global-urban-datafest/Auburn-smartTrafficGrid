@@ -1,0 +1,7 @@
+{
+  "points":[
+  "location":"scollege",
+  "traffic":"100",
+  "time":"18:56"
+  ]
+}
