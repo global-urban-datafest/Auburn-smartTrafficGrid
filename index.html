@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Smart Traffic Grid</title>
+	<meta name="description" content="Smart Traffic Grid">
+	<meta name="author" content="Resistars, Robert Skelton">
+	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<h2>Smart Traffic Grid</h2>
+
+	<p id="demo"></p>
+	<script>
+		var text1 = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}'
+		var text2 = '{"name":"Robert Skelton","street":"332 W Glenn","phone":"9313079722"}'
+
+		var obj1 = JSON.parse(text1);
+		var obj2 = JSON.parse(text2);
+		
+
+		document.getElementById("demo").innerHTML = obj1.name + "<br>" + obj1.street + "<br>" + obj1.phone;
+		document.getElementById("demo").innerHTML = obj2.name + "<br>" + obj2.street + "<br>" + obj2.phone;
+
+	</script>
+</body>
+</html>
