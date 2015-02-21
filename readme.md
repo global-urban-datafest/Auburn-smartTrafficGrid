@@ -1,20 +1,20 @@
+PROJECT PAGE
+
+global.datafest.net/a/datafest.net/globalurbandatafest/projects/smart-traffic-grid
+
 Summary
-
-We are doing image processing to determine if downtown Auburn has traffic congestion. 
-
-
-Full Description
-
-We are writing image processing algorithms to determine how congested downtown Auburn is at any given time, using the publicly available cameras from the City of Auburn. These cameras are hosted here.
+We are writing image processing algorithms to determine how congested downtown Auburn is at any given time, using the publicly available cameras from the City of Auburn.
 
 
 MEMBERS
 
 Lingjun Gao
+Zhifeng He
 Robert Skelton
 Kefan Xiao
 Yi Xu
 Xuyu Wang
+
 
 PART OF
 
