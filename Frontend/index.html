@@ -24,12 +24,10 @@
 	</style>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
 	<script>
-
-		var map, pointarray, heatmap;
-
-var collegeN = 1;	// weight for College St traffic, Northbound
-var collegeS = 3;	// weight for College St traffic, Southbound
-var magnoliaW = 5;	// weight for Magnoila traffic, westbound
+var map, pointarray, heatmap;
+var collegeN = 10;	// weight for College St traffic, Northbound
+var collegeS = 10;	// weight for College St traffic, Southbound
+var magnoliaW = 20;	// weight for Magnoila traffic, westbound
 var magnoliaE = 10; // weight for Magnoila traffic, eastbound
 
 //this will be the streets in Auburn that we plot points (traffic levels) on
