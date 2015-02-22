@@ -18,8 +18,8 @@
   <script>
     function initialize() {
       var mapOptions = {
-        zoom: 20,
-        center: new google.maps.LatLng(32.606550, -85.481751),
+        zoom: 19,
+        center: new google.maps.LatLng(32.606600, -85.480778), // halway between Toomer's and Hamilton's
         mapTypeId: google.maps.MapTypeId.HYBRID
       };
 
@@ -27,92 +27,99 @@
 
     // values that need to be updated from the connected database.
     // this is the data that the backend creates
-    var sCollegeValue = 1;
-    var nCollegeValue = 3;
-    var eMagnoliaValue = 5;
-    var wMagnoliaValue = 9;
+    var s1 = 1; // West Magnolia to South College
+    var s2 = 2; // West Magnolia to East Magnolia 1
+    var s3 = 3; // West Magnolia to East Magnolia 2
+    var s4 = 4; // East Magnolia to West Magnolia
 
     // plug in given values of traffic to plot an indication of how dense it is
     function pickColor(temp) {
-      if (temp >= 0 && temp < 2) {
-        return 'green';
-      } else if (temp >= 2 && temp < 4) {
-        return 'black';
-      } else if (temp >= 4 && temp < 6) {
+      if (temp >= 0 && temp < 1) {
+        return '#00ff00';
+      } else if (temp >= 1 && temp < 2) {
+        return '#b2ffb2';
+      } else if (temp >= 2 && temp < 3) {
         return '#ffb2b2';
-      } else if (temp >= 6 && temp < 8) {
-        return '#ff6666';
-      } else if (temp >= 8 && temp <= 10) {
+      } else if (temp >= 3 && temp < 4) {
         return '#ff0000';
+      } else if (temp >= 4 && temp <= 5) {
+        return '#b30000';
       }
       else
-        return 'pink';
+        return 'black';
     }
 
-    var Scollege = [
-      new google.maps.LatLng(32.60644, -85.48178),
-      new google.maps.LatLng(32.60589, -85.48178)
+    var s1line = [
+      new google.maps.LatLng(32.606532, -85.483633),
+      new google.maps.LatLng(32.606549, -85.481910),
+      new google.maps.LatLng(32.606536, -85.481830),
+      new google.maps.LatLng(32.606459, -85.481797),
+      new google.maps.LatLng(32.605264, -85.481792)
     ];
 
-    var ScollegeLine = new google.maps.Polyline({
-      path: Scollege,
+    var s1plot = new google.maps.Polyline({
+      path: s1line,
       geodesic: true,
-      strokeColor: pickColor(sCollegeValue),
+      strokeColor: pickColor(s1),
       strokeOpacity: 1.0,
-      strokeWeight: 30
+      strokeWeight: 15
     });
 
-    var Ncollege = [
-      new google.maps.LatLng(32.60644, -85.48165),
-      new google.maps.LatLng(32.60589, -85.48165)
+    var s2line = [
+      new google.maps.LatLng(32.606568, -85.482489),
+      new google.maps.LatLng(32.606542, -85.480794)
     ];
 
-    var NcollegeLine = new google.maps.Polyline({
-      path: Ncollege,
+    var s2plot = new google.maps.Polyline({
+      path: s2line,
       geodesic: true,
-      strokeColor: pickColor(nCollegeValue),
+      strokeColor: pickColor(s2),
       strokeOpacity: 1.0,
-      strokeWeight: 30
+      strokeWeight: 15
     });
 
-    var Wmagnolia = [
-      new google.maps.LatLng(32.60652, -85.48187),
-      new google.maps.LatLng(32.60652, -85.48274)
+    var s3line = [
+      new google.maps.LatLng(32.606542, -85.480794),
+      new google.maps.LatLng(32.606521, -85.479779),
+      new google.maps.LatLng(32.606537, -85.479279)
     ];
 
-    var WmagnoliaLine = new google.maps.Polyline({
-      path: Wmagnolia,
+    var s3plot = new google.maps.Polyline({
+      path: s3line,
       geodesic: true,
-      strokeColor: pickColor(wMagnoliaValue),
+      strokeColor: pickColor(s3),
       strokeOpacity: 1.0,
-      strokeWeight: 30
+      strokeWeight: 15
     });
 
-    var Emagnolia = [
-      new google.maps.LatLng(32.606638, -85.48187),
-      new google.maps.LatLng(32.606638, -85.48274)
+    var s4line = [
+      new google.maps.LatLng(32.607038, -85.479928),
+      new google.maps.LatLng(32.606715, -85.479931),
+      new google.maps.LatLng(32.606638, -85.479936),
+      new google.maps.LatLng(32.606593, -85.479968),
+      new google.maps.LatLng(32.606587, -85.480798)
     ];
 
-    var EmagnoliaLine = new google.maps.Polyline({
-      path: Emagnolia,
+    var s4plot = new google.maps.Polyline({
+      path: s4line,
       geodesic: true,
-      strokeColor: pickColor(eMagnoliaValue),
+      strokeColor: pickColor(s4),
       strokeOpacity: 1.0,
-      strokeWeight: 30
+      strokeWeight: 15
     });
 
     // Graph all lines
-    ScollegeLine.setMap(map);
-    NcollegeLine.setMap(map);
-    WmagnoliaLine.setMap(map);
-    EmagnoliaLine.setMap(map);
+    s1plot.setMap(map);
+    s2plot.setMap(map);
+    s3plot.setMap(map);
+    s4plot.setMap(map);
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
   </script>
 </head>
-<body background="bg.jpg">
+<body style="background:black">
 <font color="white">
 
 
@@ -122,6 +129,28 @@
  <div> <p><center> We have developed image processing algorithms to determine how congested downtown Auburn is at any given time, using the publicly available cameras from the <a href="http://www.auburnalabama.org/mvc/cams/City-Cameras/Toomer's-Corner">City of Auburn</a>.
   <br> This is part of the <a href="http://global.datafest.net/cities/auburn-us">Global Datafest Hackathon 2015</a> in Auburn, AL. 
   <br></div><br>
-  <center>Lingjun Gao | Zhifeng He | Robert Skelton | Kefan Xiao | Yi Xu | Xuyu Wang
+  <center>
+  <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e">No traffic</th>
+    <th class="tg-031e">Minor Traffic</th>
+    <th class="tg-031e">Average Traffic</th>
+    <th class="tg-031e">Unbearable Traffic</th>
+    <th class="tg-031e">Hell</th>
+  </tr>
+  <tr>
+    <td class="tg-031e" bgcolor="#00ff00"></td>
+    <td class="tg-031e" bgcolor="#b2ffb2"></td>
+    <td class="tg-031e" bgcolor="#ffb2b2"></td>
+    <td class="tg-031e" bgcolor="#ff00000"></td>
+    <td class="tg-031e" bgcolor="##b30000"></td>
+  </tr>
+</table>
+<center><br>Lingjun Gao | Zhifeng He | Robert Skelton | Kefan Xiao | Yi Xu | Xuyu Wang
 	</body>
 </html>
