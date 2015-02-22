@@ -18,8 +18,8 @@
 	<script>
 		function initialize() {
 			var mapOptions = {
-				zoom: 19,
-        center: new google.maps.LatLng(32.606600, -85.480778), // halway between Toomer's and Hamilton's
+				zoom: 20,
+        center: new google.maps.LatLng(32.606558, -85.481730), // toomer's corner paw print
         mapTypeId: google.maps.MapTypeId.HYBRID
     };
 
@@ -27,10 +27,10 @@
 
     // values that need to be updated from the connected database.
     // this is the data that the backend creates
-    var s1 = 1; // West Magnolia to South College
-    var s2 = 2; // West Magnolia to East Magnolia 1
-    var s3 = 3; // West Magnolia to East Magnolia 2
-    var s4 = 4; // East Magnolia to West Magnolia
+    var s1 = 1; // west to east magnolia
+    var s2 = 2; // east to west magnolia
+    var s3 = 3; // north to south colleg
+    var s4 = 4; // south to north college
 
     // plug in given values of traffic to plot an indication of how dense it is
     function pickColor(temp) {
@@ -39,7 +39,7 @@
     	} else if (temp >= 1 && temp < 2) {
     		return '#b2ffb2';
     	} else if (temp >= 2 && temp < 3) {
-    		return '#ffb2b2';
+    		return 'yellow';
     	} else if (temp >= 3 && temp < 4) {
     		return '#ff0000';
     	} else if (temp >= 4 && temp <= 5) {
@@ -50,11 +50,10 @@
     }
 
     var s1line = [
-    new google.maps.LatLng(32.606532, -85.483633),
-    new google.maps.LatLng(32.606549, -85.481910),
-    new google.maps.LatLng(32.606536, -85.481830),
-    new google.maps.LatLng(32.606459, -85.481797),
-    new google.maps.LatLng(32.605264, -85.481792)
+        new google.maps.LatLng(32.606523, -85.482683),
+        new google.maps.LatLng(32.606526, -85.481873),
+        new google.maps.LatLng(32.606500, -85.481551),
+        new google.maps.LatLng(32.606516, -85.480757)
     ];
 
     var s1plot = new google.maps.Polyline({
@@ -66,8 +65,10 @@
     });
 
     var s2line = [
-    new google.maps.LatLng(32.606568, -85.482489),
-    new google.maps.LatLng(32.606542, -85.480794)
+        new google.maps.LatLng(32.606583, -85.480585),
+        new google.maps.LatLng(32.606590, -85.481580),
+        new google.maps.LatLng(32.606612, -85.481894),
+        new google.maps.LatLng(32.606609, -85.482693)
     ];
 
     var s2plot = new google.maps.Polyline({
@@ -79,9 +80,10 @@
     });
 
     var s3line = [
-    new google.maps.LatLng(32.606542, -85.480794),
-    new google.maps.LatLng(32.606521, -85.479779),
-    new google.maps.LatLng(32.606537, -85.479279)
+        new google.maps.LatLng(32.607047, -85.481765),
+        new google.maps.LatLng(32.606673, -85.481760),
+        new google.maps.LatLng(32.606404, -85.481779),
+        new google.maps.LatLng(32.605711, -85.481771)
     ];
 
     var s3plot = new google.maps.Polyline({
@@ -93,11 +95,10 @@
     });
 
     var s4line = [
-    new google.maps.LatLng(32.607038, -85.479928),
-    new google.maps.LatLng(32.606715, -85.479931),
-    new google.maps.LatLng(32.606638, -85.479936),
-    new google.maps.LatLng(32.606593, -85.479968),
-    new google.maps.LatLng(32.606587, -85.480798)
+        new google.maps.LatLng(32.605816, -85.481655),
+        new google.maps.LatLng(32.606427, -85.481674),
+        new google.maps.LatLng(32.606705, -85.481682),
+        new google.maps.LatLng(32.607194, -85.481685)
     ];
 
     var s4plot = new google.maps.Polyline({
@@ -147,7 +148,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				<tr>
 					<td class="tg-031e" bgcolor="#00ff00"></td>
 					<td class="tg-031e" bgcolor="#b2ffb2"></td>
-					<td class="tg-031e" bgcolor="#ffb2b2"></td>
+					<td class="tg-031e" bgcolor="yellow"></td>
 					<td class="tg-031e" bgcolor="#ff00000"></td>
 					<td class="tg-031e" bgcolor="##b30000"></td>
 				</tr>
