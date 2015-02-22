@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <meta charset="utf-8">
-  <title>Smart Traffic Grid in Auburn, AL</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-  <style>
-    html, body, #map-canvas {
-      height: 90%;
-      margin: 0px;
-      padding: 0px
-    }
-  </style>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-  <script>
-    function initialize() {
-      var mapOptions = {
-        zoom: 19,
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	<title>Smart Traffic Grid in Auburn, AL</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+	<style>
+		html, body, #map-canvas {
+			height: 90%;
+			margin: 0px;
+			padding: 0px
+		}
+	</style>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+	<script>
+		function initialize() {
+			var mapOptions = {
+				zoom: 19,
         center: new google.maps.LatLng(32.606600, -85.480778), // halway between Toomer's and Hamilton's
         mapTypeId: google.maps.MapTypeId.HYBRID
-      };
+    };
 
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
@@ -34,78 +34,78 @@
 
     // plug in given values of traffic to plot an indication of how dense it is
     function pickColor(temp) {
-      if (temp >= 0 && temp < 1) {
-        return '#00ff00';
-      } else if (temp >= 1 && temp < 2) {
-        return '#b2ffb2';
-      } else if (temp >= 2 && temp < 3) {
-        return '#ffb2b2';
-      } else if (temp >= 3 && temp < 4) {
-        return '#ff0000';
-      } else if (temp >= 4 && temp <= 5) {
-        return '#b30000';
-      }
-      else
-        return 'black';
+    	if (temp >= 0 && temp < 1) {
+    		return '#00ff00';
+    	} else if (temp >= 1 && temp < 2) {
+    		return '#b2ffb2';
+    	} else if (temp >= 2 && temp < 3) {
+    		return '#ffb2b2';
+    	} else if (temp >= 3 && temp < 4) {
+    		return '#ff0000';
+    	} else if (temp >= 4 && temp <= 5) {
+    		return '#b30000';
+    	}
+    	else
+    		return 'black';
     }
 
     var s1line = [
-      new google.maps.LatLng(32.606532, -85.483633),
-      new google.maps.LatLng(32.606549, -85.481910),
-      new google.maps.LatLng(32.606536, -85.481830),
-      new google.maps.LatLng(32.606459, -85.481797),
-      new google.maps.LatLng(32.605264, -85.481792)
+    new google.maps.LatLng(32.606532, -85.483633),
+    new google.maps.LatLng(32.606549, -85.481910),
+    new google.maps.LatLng(32.606536, -85.481830),
+    new google.maps.LatLng(32.606459, -85.481797),
+    new google.maps.LatLng(32.605264, -85.481792)
     ];
 
     var s1plot = new google.maps.Polyline({
-      path: s1line,
-      geodesic: true,
-      strokeColor: pickColor(s1),
-      strokeOpacity: 1.0,
-      strokeWeight: 15
+    	path: s1line,
+    	geodesic: true,
+    	strokeColor: pickColor(s1),
+    	strokeOpacity: 1.0,
+    	strokeWeight: 15
     });
 
     var s2line = [
-      new google.maps.LatLng(32.606568, -85.482489),
-      new google.maps.LatLng(32.606542, -85.480794)
+    new google.maps.LatLng(32.606568, -85.482489),
+    new google.maps.LatLng(32.606542, -85.480794)
     ];
 
     var s2plot = new google.maps.Polyline({
-      path: s2line,
-      geodesic: true,
-      strokeColor: pickColor(s2),
-      strokeOpacity: 1.0,
-      strokeWeight: 15
+    	path: s2line,
+    	geodesic: true,
+    	strokeColor: pickColor(s2),
+    	strokeOpacity: 1.0,
+    	strokeWeight: 15
     });
 
     var s3line = [
-      new google.maps.LatLng(32.606542, -85.480794),
-      new google.maps.LatLng(32.606521, -85.479779),
-      new google.maps.LatLng(32.606537, -85.479279)
+    new google.maps.LatLng(32.606542, -85.480794),
+    new google.maps.LatLng(32.606521, -85.479779),
+    new google.maps.LatLng(32.606537, -85.479279)
     ];
 
     var s3plot = new google.maps.Polyline({
-      path: s3line,
-      geodesic: true,
-      strokeColor: pickColor(s3),
-      strokeOpacity: 1.0,
-      strokeWeight: 15
+    	path: s3line,
+    	geodesic: true,
+    	strokeColor: pickColor(s3),
+    	strokeOpacity: 1.0,
+    	strokeWeight: 15
     });
 
     var s4line = [
-      new google.maps.LatLng(32.607038, -85.479928),
-      new google.maps.LatLng(32.606715, -85.479931),
-      new google.maps.LatLng(32.606638, -85.479936),
-      new google.maps.LatLng(32.606593, -85.479968),
-      new google.maps.LatLng(32.606587, -85.480798)
+    new google.maps.LatLng(32.607038, -85.479928),
+    new google.maps.LatLng(32.606715, -85.479931),
+    new google.maps.LatLng(32.606638, -85.479936),
+    new google.maps.LatLng(32.606593, -85.479968),
+    new google.maps.LatLng(32.606587, -85.480798)
     ];
 
     var s4plot = new google.maps.Polyline({
-      path: s4line,
-      geodesic: true,
-      strokeColor: pickColor(s4),
-      strokeOpacity: 1.0,
-      strokeWeight: 15
+    	path: s4line,
+    	geodesic: true,
+    	strokeColor: pickColor(s4),
+    	strokeOpacity: 1.0,
+    	strokeWeight: 15
     });
 
     // Graph all lines
@@ -113,44 +113,47 @@
     s2plot.setMap(map);
     s3plot.setMap(map);
     s4plot.setMap(map);
-  }
+}
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize);
 
-  </script>
+</script>
 </head>
 <body style="background:black">
-<font color="white">
+	<font color="white">
+
+		<meta http-equiv="refresh" content="10">
+		<div id="map-canvas"></div>
+	</meta>
+	
+	<a href="https://github.com/global-urban-datafest/Auburn-smartTrafficGrid"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<div> <p><center> We have developed image processing algorithms to determine how congested downtown Auburn is at any given time, using the publicly available cameras from the <a href="http://www.auburnalabama.org/mvc/cams/City-Cameras/Toomer's-Corner">City of Auburn</a>.
+		<br> This is part of the <a href="http://global.datafest.net/cities/auburn-us">Global Datafest Hackathon 2015</a> in Auburn, AL. 
+		<br></div><br>
+		<center>
+			<style type="text/css">
+				.tg  {border-collapse:collapse;border-spacing:0;}
+				.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+				.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+			</style>
+			<table class="tg">
+				<tr>
+					<th class="tg-031e">No traffic</th>
+					<th class="tg-031e">Minor Traffic</th>
+					<th class="tg-031e">Average Traffic</th>
+					<th class="tg-031e">Unbearable Traffic</th>
+					<th class="tg-031e">Hell</th>
+				</tr>
+				<tr>
+					<td class="tg-031e" bgcolor="#00ff00"></td>
+					<td class="tg-031e" bgcolor="#b2ffb2"></td>
+					<td class="tg-031e" bgcolor="#ffb2b2"></td>
+					<td class="tg-031e" bgcolor="#ff00000"></td>
+					<td class="tg-031e" bgcolor="##b30000"></td>
+				</tr>
+			</table>
+			<center><br>Lingjun Gao | Zhifeng He | Robert Skelton | Kefan Xiao | Yi Xu | Xuyu Wang
 
 
-  <div id="map-canvas"></div>
-  
-  <a href="https://github.com/global-urban-datafest/Auburn-smartTrafficGrid"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
- <div> <p><center> We have developed image processing algorithms to determine how congested downtown Auburn is at any given time, using the publicly available cameras from the <a href="http://www.auburnalabama.org/mvc/cams/City-Cameras/Toomer's-Corner">City of Auburn</a>.
-  <br> This is part of the <a href="http://global.datafest.net/cities/auburn-us">Global Datafest Hackathon 2015</a> in Auburn, AL. 
-  <br></div><br>
-  <center>
-  <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-</style>
-<table class="tg">
-  <tr>
-    <th class="tg-031e">No traffic</th>
-    <th class="tg-031e">Minor Traffic</th>
-    <th class="tg-031e">Average Traffic</th>
-    <th class="tg-031e">Unbearable Traffic</th>
-    <th class="tg-031e">Hell</th>
-  </tr>
-  <tr>
-    <td class="tg-031e" bgcolor="#00ff00"></td>
-    <td class="tg-031e" bgcolor="#b2ffb2"></td>
-    <td class="tg-031e" bgcolor="#ffb2b2"></td>
-    <td class="tg-031e" bgcolor="#ff00000"></td>
-    <td class="tg-031e" bgcolor="##b30000"></td>
-  </tr>
-</table>
-<center><br>Lingjun Gao | Zhifeng He | Robert Skelton | Kefan Xiao | Yi Xu | Xuyu Wang
-	</body>
-</html>
+			</body>
+			</html>
